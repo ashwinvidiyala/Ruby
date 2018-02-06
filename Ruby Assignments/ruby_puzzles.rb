@@ -7,6 +7,9 @@
 # end
 # puts greater_than(array, 10)
 
+# To find the sum in range 1 to 100
+# (1..100).reduce(:+)
+
 # array = %w{John KB Oliver Cory Matthew Christopher}
 # def shuffle_print(array, large)
 #   array.shuffle.each { |x| puts x}
