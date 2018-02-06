@@ -13,8 +13,19 @@ class MathDojo
         @result += num
       end
     end
+    # or you could do this:
     self
   end
+
+  # def add *number
+  #   @result = number.flatten!.reduce(:+)
+  #   self
+  # end
+  #
+  # def subtract *number
+  #   @result = number.flatten!.reduce(:-)
+  #   self
+  # end
 
   def subtract *number
     for num in number
