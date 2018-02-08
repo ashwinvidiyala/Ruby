@@ -11,28 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207225115) do
+ActiveRecord::Schema.define(version: 20180208133000) do
 
-  create_table "addresses", force: :cascade do |t|
-    t.string   "street"
+  create_table "dojos", force: :cascade do |t|
+    t.string   "name"
     t.string   "city"
     t.string   "state"
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "addresses", ["user_id"], name: "index_addresses_on_user_id"
-
-  create_table "users", force: :cascade do |t|
+  create_table "ninjas", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
-    t.string   "password"
-    t.integer  "age"
+    t.integer  "dojo_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "dog_name"
   end
+
+  add_index "ninjas", ["dojo_id"], name: "index_ninjas_on_dojo_id"
 
 end
