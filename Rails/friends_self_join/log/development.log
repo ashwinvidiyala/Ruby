@@ -1,0 +1,241 @@
+  [1m[36m (5.2ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  select sqlite_version(*)
+  [1m[36m (4.8ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.9ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateUsers (20180209221159)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (8.8ms)[0m  CREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "first_name" varchar, "last_name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36mSQL (1.2ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180209221159"]]
+  [1m[35m (4.8ms)[0m  commit transaction
+Migrating to CreateFriendships (20180209221224)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (7.0ms)[0m  CREATE TABLE "friendships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "friend_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) 
+  [1m[36m (0.3ms)[0m  [1mCREATE  INDEX "index_friendships_on_user_id" ON "friendships" ("user_id")[0m
+  [1m[35m (0.2ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+
+  [1m[36m (0.6ms)[0m  [1mCREATE  INDEX "index_friendships_on_friend_id" ON "friendships" ("friend_id")[0m
+  [1m[35mSQL (3.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180209221224"]]
+  [1m[36m (3.1ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (4.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_friend_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_friend_id' AND type='index'
+[0m
+  [1m[35m (2.7ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (1.1ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_friend_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_friend_id' AND type='index'
+[0m
+  [1m[35m (1.5ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+
+  [1m[36m (2.5ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (1.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateFriendships (20180209221224)
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (6.4ms)[0m  DROP TABLE "friendships"
+  [1m[36mSQL (1.4ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = ?[0m  [["version", "20180209221224"]]
+  [1m[35m (12.3ms)[0m  commit transaction
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36m (1.7ms)[0m  [1mSELECT "schema_migrations"."version" FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateFriendships (20180209221224)
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36m (9.0ms)[0m  [1mCREATE TABLE "friendships" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "user_id" integer, "friend_id" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL) [0m
+  [1m[35m (0.1ms)[0m  select sqlite_version(*)
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_friendships_on_user_id" ON "friendships" ("user_id")[0m
+  [1m[35m (0.1ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+
+  [1m[36m (0.2ms)[0m  [1mCREATE  INDEX "index_friendships_on_friend_id" ON "friendships" ("friend_id")[0m
+  [1m[35mSQL (6.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "20180209221224"]]
+  [1m[36m (6.5ms)[0m  [1mcommit transaction[0m
+  [1m[35mActiveRecord::SchemaMigration Load (4.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.2ms)[0m  [1m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_friend_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_friend_id' AND type='index'
+[0m
+  [1m[35m (2.0ms)[0m              SELECT sql
+            FROM sqlite_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_friendships_on_user_id' AND type='index'
+
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (5.8ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["first_name", "John"], ["last_name", "Smith"], ["created_at", "2018-02-09 22:33:21.615127"], ["updated_at", "2018-02-09 22:33:21.615127"]]
+  [1m[35m (3.3ms)[0m  commit transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.7ms)[0m  INSERT INTO "users" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Ashwin"], ["last_name", "Vidiyala"], ["created_at", "2018-02-09 22:33:47.725015"], ["updated_at", "2018-02-09 22:33:47.725015"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (6.3ms)[0m  [1mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["friend_id", 2], ["created_at", "2018-02-09 22:34:23.326036"], ["updated_at", "2018-02-09 22:34:23.326036"]]
+  [1m[35m (3.5ms)[0m  commit transaction
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (1.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?  [["friend_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.9ms)[0m  INSERT INTO "users" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["first_name", "Jane"], ["last_name", "Smith"], ["created_at", "2018-02-09 22:34:57.603040"], ["updated_at", "2018-02-09 22:34:57.603040"]]
+  [1m[36m (4.0ms)[0m  [1mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (8.3ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["first_name", "Joe"], ["last_name", "Rogan"], ["created_at", "2018-02-09 22:35:05.260751"], ["updated_at", "2018-02-09 22:35:05.260751"]]
+  [1m[35m (5.1ms)[0m  commit transaction
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mFriendship Load (2.1ms)[0m  SELECT "friendships".* FROM "friendships"
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (6.4ms)[0m  INSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["friend_id", 2], ["created_at", "2018-02-09 22:35:41.467992"], ["updated_at", "2018-02-09 22:35:41.467992"]]
+  [1m[36m (3.3ms)[0m  [1mcommit transaction[0m
+  [1m[35mFriendship Load (2.4ms)[0m  SELECT "friendships".* FROM "friendships"
+  [1m[36mUser Load (2.6ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.8ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.7ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  DELETE FROM "friendships" WHERE "friendships"."user_id" = ? AND "friendships"."friend_id" = 2  [["user_id", 1]]
+  [1m[36m (3.7ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (1.9ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1[0m
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mSQL (4.5ms)[0m  [1mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 1], ["friend_id", 2], ["created_at", "2018-02-09 22:36:32.501561"], ["updated_at", "2018-02-09 22:36:32.501561"]]
+  [1m[35m (4.7ms)[0m  commit transaction
+  [1m[36mUser Load (6.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (4.0ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 2
+  [1m[36m (0.2ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.2ms)[0m  INSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["friend_id", 3], ["created_at", "2018-02-09 22:36:47.783187"], ["updated_at", "2018-02-09 22:36:47.783187"]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (2.1ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.8ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 3
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (5.7ms)[0m  INSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)  [["user_id", 1], ["friend_id", 4], ["created_at", "2018-02-09 22:36:50.596622"], ["updated_at", "2018-02-09 22:36:50.596622"]]
+  [1m[36m (10.6ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (1.7ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mFriendship Load (2.4ms)[0m  [1mSELECT "friendships".* FROM "friendships"[0m
+  [1m[35mUser Load (2.6ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1
+  [1m[36mUser Load (2.8ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 3[0m
+  [1m[35m (0.0ms)[0m  begin transaction
+  [1m[36mSQL (9.0ms)[0m  [1mINSERT INTO "friendships" ("user_id", "friend_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["user_id", 2], ["friend_id", 4], ["created_at", "2018-02-09 22:37:03.572384"], ["updated_at", "2018-02-09 22:37:03.572384"]]
+  [1m[35m (4.5ms)[0m  commit transaction
+  [1m[36mUser Load (2.5ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 2]]
+  [1m[35mUser Load (2.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (2.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1
+  [1m[36mUser Load (1.6ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 2]]
+  [1m[35mUser Load (2.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 2
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 3]]
+  [1m[35mUser Load (6.0ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 3
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 4]]
+  [1m[35mUser Load (1.7ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.9ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 1]]
+  [1m[35mUser Load (2.0ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (9.9ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.3ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (2.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.0ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."user_id" WHERE "friendships"."friend_id" = ?[0m  [["friend_id", 1]]
+  [1m[35mUser Load (9.2ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (10.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mUser Load (2.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (2.3ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (3.4ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mFriendship Load (2.1ms)[0m  SELECT "friendships".* FROM "friendships"
+  [1m[36mFriendship Load (1.7ms)[0m  [1mSELECT "friendships".* FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id"[0m
+  [1m[35mFriendship Load (10.4ms)[0m  SELECT "friendships".* FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id"
+  [1m[36mFriendship Load (2.1ms)[0m  [1mSELECT "friendships".* FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (2.2ms)[0m  SELECT user.first_name FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (9.1ms)[0m  [1mSELECT users.first_name FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (2.3ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (10.8ms)[0m  [1mSELECT users.first_name, users.last_name, users.id, user_id, friend_id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mUser Load (9.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mFriendship Load (2.2ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mUser Load (10.5ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (2.9ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 2]]
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1[0m
+  [1m[35mUser Load (1.6ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 2]]
+  [1m[36mFriendship Load (9.9ms)[0m  [1mSELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 2))[0m
+  [1m[35mFriendship Load (10.0ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 2))
+  [1m[36mFriendship Load (9.3ms)[0m  [1mSELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mUser Load (2.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (1.9ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mFriendship Load (2.9ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (10.3ms)[0m  [1mSELECT "friendships".* FROM "friendships"[0m
+  [1m[35mUser Load (2.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (3.7ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (2.6ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_friend_id" = ?  [[nil, 1]]
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.4ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mFriendship Load (2.1ms)[0m  [1mSELECT "friendships".* FROM "friendships"[0m
+  [1m[35mFriendship Load (2.0ms)[0m  SELECT "friendships".* FROM "friendships" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (3.0ms)[0m  [1mSELECT "friendships".* FROM "friendships" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (2.1ms)[0m  SELECT "friendships".* FROM "friendships" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (2.7ms)[0m  [1mSELECT "friendships".* FROM "friendships" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (2.3ms)[0m  SELECT friend.name FROM "friendships" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (3.2ms)[0m  [1mSELECT user.first_name FROM "friendships" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (3.1ms)[0m  SELECT user.first_name FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (1.8ms)[0m  [1mSELECT users.first_name FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (2.3ms)[0m  SELECT users.first_name FROM "friendships" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (2.7ms)[0m  [1mSELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (2.1ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mFriendship Load (1.8ms)[0m  [1mSELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))[0m
+  [1m[35mFriendship Load (1.9ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
+  [1m[36mUser Load (2.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.9ms)[0m  SELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?  [["user_id", 1]]
+  [1m[36mUser Load (2.7ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1 OFFSET 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (12.3ms)[0m  DELETE FROM "friendships" WHERE "friendships"."user_id" = ? AND "friendships"."friend_id" = 2  [["user_id", 1]]
+  [1m[36m (3.2ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Load (2.9ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUser Load (2.9ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "friendships" ON "users"."id" = "friendships"."friend_id" WHERE "friendships"."user_id" = ?[0m  [["user_id", 1]]
+  [1m[35mFriendship Load (2.2ms)[0m  SELECT users.first_name, users.last_name, users.id FROM "friendships" INNER JOIN "users" ON "users"."id" = "friendships"."user_id" WHERE (NOT (user_id = 1))
