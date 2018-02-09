@@ -57,12 +57,13 @@ User.third.posts
 User.third.messages
 
 #### Retrieve all posts associated with the blog id 5 as well as who left these posts.
-
+Blog.find(5).posts.joins(:user)
 
 #### Retrieve all messages associated with the blog id 5 along with all the user information of those who left the messages
-
+Blog.find(5).messages.joins(:user).select("users.first_name, users.last_name, users.email_address, messages.message")
 
 #### Grab all user information of those that own the first blog (make this work by allowing Blog.first.owners to work).
-
+Blog.first.owners
 
 #### Change it so that the first blog is no longer owned by the first user.
+User.first.blogs_owned.delete(Blog.first)
