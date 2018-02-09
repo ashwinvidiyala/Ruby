@@ -1,4 +1,5 @@
 class Blog < ActiveRecord::Base
+  has_many :comments, as: :commentable
   has_many :owners
   has_many :posts
   has_many :user_owners, through: :owners, source: :user
