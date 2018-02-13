@@ -22,5 +22,11 @@
         </tr>
       <% end %>
     </table>
+
+    <a href="<%= new_dojo_path %>"><button>New Dojo</button></a>
+
+    <% if flash[:success] %>
+      <p><%= flash[:success] %></p>
+    <% end %>
   </body>
 </html>
