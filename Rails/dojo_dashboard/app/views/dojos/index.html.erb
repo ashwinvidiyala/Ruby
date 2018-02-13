@@ -12,6 +12,7 @@
         <th>Street</th>
         <th>City</th>
         <th>State</th>
+        <th>Actions</th>
       </tr>
       <% @dojos.each do |dojo| %>
         <tr>
@@ -19,6 +20,7 @@
           <td><%= dojo.street %></td>
           <td><%= dojo.city %></td>
           <td><%= dojo.state %></td>
+          <td><a href="<%= dojo_path dojo.id %>">Show</a> <a href="<%= edit_dojo_path dojo.id %>">Edit</a> <a href="<%= dojo_path dojo.id%>" data-method = 'delete'>Destroy</a></td>
         </tr>
       <% end %>
     </table>
