@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Welcome To The Coding Dojo Survey</title>
+  </head>
+  <body>
+    <h2>Dojo Survey Form</h2>
+    <form action="<%= questions_path %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <label for="name">Your Name:</label>
+      <input type="text" name="question[name]"><br><br>
+
+      <label for="question[dojo_location]">Dojo Location</label>
+      <select name="question[dojo_location]">
+        <option value="Dallas">Dallas</option>
+        <option value="Tulsa">Tulsa</option>
+        <option value="Mountain View">Mountain View</option>
+      </select><br><br>
+
+      <label for="question[favorite_language]">Favorite Language</label>
+      <select name="question[favorite_language]">
+        <option value="Ruby">Ruby</option>
+        <option value="Javascript">Javascript</option>
+        <option value="C">C</option>
+      </select><br><br>
+
+      <label for="question[comment]">Comment:</label><br>
+      <textarea name="question[comment]" rows="8" cols="30">Comment (optional)</textarea>
+
+      <input type="submit" name="submit">
+    </form>
+  </body>
+</html>
