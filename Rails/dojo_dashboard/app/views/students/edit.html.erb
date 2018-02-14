@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Editing <%= @student.first_name %> <%= @student.last_name %></title>
+  </head>
+  <body>
+    <h2>Editing <%= @student.first_name %> <%= @student.last_name %></h2>
+    <form action="<%= dojo_student_path @dojo.id, @student.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+      <label for="first_name">First Name</label><br>
+      <input type="text" name="student[first_name]" value="<%= @student.first_name %>"><br><br>
+
+      <label for="last_name">Last Name</label><br>
+      <input type="text" name="student[last_name]" value="<%= @student.last_name %>"><br><br>
+
+      <label for="email">Email Address</label><br>
+      <input type="text" name="student[email]" value="<%= @student.email %>"><br><br>
+
+      <label for="dojo">Dojo</label><br>
+      <select name="student[dojo_id]">
+        <option value="<%= @student.dojo.id %>"><%= @student.dojo.branch %></option>
+        <% @dojos.each do |dojo| %>
+          <option value="<%= dojo.id %>"><%= dojo.branch %></option>
+        <% end %>
+      </select><br><br>
+
+      <input type="submit" value="Update">
+    </form><br><br>
+
+    <a href="<%= dojo_path @dojo %>">Home</a>
+    <a href="<%= dojo_student_path @dojo, @student %>"><%= @student.first_name %></a>
+
+    <% if flash[:errors] %>
+      <% flash[:errors].each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    <% end %>
+  </body>
+</html>

@@ -35,6 +35,7 @@ class DojosController < ApplicationController
 
   def show
     @dojo = Dojo.find(params[:id])
+    @students = @dojo.students
     return render 'show.html.erb'
   end
 

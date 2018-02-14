@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
+  get 'students/index'
+
+  get 'students/edit'
+
+  get 'students/new'
+
+  get 'students/show'
+
   root 'dojos#index'
-  resources :dojos
+  resources :dojos do
+    resources :students
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
