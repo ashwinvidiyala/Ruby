@@ -1,0 +1,39 @@
+<h2>All Posts</h2>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Author</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= post.content %></td>
+      <td><%= post.user.first_name %><%= post.user.last_name %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h2>New Post</h2>
+
+<form action="<%= posts_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label for="title">Title</label><br>
+  <input type="text" name="post[title]"><br><br>
+
+  <label for="content">Content</label><br>
+  <textarea name="post[content]" rows="8" cols="80"></textarea><br><br>
+
+  <label for="author">Author</label>
+  <select name="post[user_id]">
+    <% @users.each do |user| %>
+      <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
+    <% end %>
+  </select><br><br>
+
+  <input type="submit" value="Submit">
+</form><br>
+
+<h2>Go To Users Page</h2>
+<a href="<%= root_path %>"><button>Posts</button></a>
