@@ -8,7 +8,11 @@
 </head>
 <body>
 
-  <p><%= flash[:errors] if flash[:errors] %></p>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+  <% end %>
 
   <% if current_user %>
     <form action="<%= session_path current_user %>" method="post">

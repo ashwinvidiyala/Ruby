@@ -7,19 +7,27 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def create
     user = User.create( user_params )
-    flash[:errors] = user.errors.full_messages
-    redirect_to :back unless user.valid?
-
+    unless user.valid?
+      flash[:errors] = user.errors.full_messages
+      redirect_to new_user_path
+    end
     return redirect_to new_session_path
   end
 
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  def update
+    user = User.find(params[:id])
+    user.name = params[:name]
+    user.email = params[:email]
+    user.save
+    unless user.valid?
+      flash[:errors] = user.errors.full_messages
+      return redirect_to :back
+    end
+    return redirect_to user_path user.id
   end
 end
