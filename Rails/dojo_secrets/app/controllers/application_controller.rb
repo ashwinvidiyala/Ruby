@@ -4,12 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    User.find(session[:user]) if session[:user]
+    User.find(session[:user_id]) if session.key?(:user_id)
+    # session.key?(:user) ? User.find(session[:user]) : null
   end
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
-  
+
   helper_method :current_user
 end

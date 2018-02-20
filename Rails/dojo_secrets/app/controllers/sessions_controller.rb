@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
     if user
-      session[:user] = user.id
+      session[:user_id] = user.id
       return redirect_to user_path user.id
     else
       flash[:errors] = ['Invalid Combination']
@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
   # end
 
   def destroy
-    session.delete(:user) if session[:user]
+    session.delete(:user_id) if session[:user_id]
     redirect_to new_session_path
   end
 
