@@ -1,3 +1,23 @@
 <h2><%= @user.name %>'s Information</h2>
 <p><%= @user.email %></p>
-<a href="<%= edit_user_path @user %>">Edit Profile</a>
+<a href="<%= edit_user_path @user %>">Edit Profile</a><br><br>
+
+<form action="<%= secrets_path %>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="user_id" value="<%= @user.id %>">
+
+  <label>Content</label>
+  <input type="text" name="content">
+
+  <input type="submit" name="submit" value="Create Secret">
+</form>
+
+<h3>My secrets</h3>
+<% if @secrets %>
+  <% @secrets.each do |secret| %>
+    <p><%= secret.content %></p>
+    <% if current_user == secret.user %>
+      <a href="<%= secret_path secret %>" data-method= 'delete'><button>Delete Secret</button></a>
+    <% end %>
+  <% end %>
+<% end %>

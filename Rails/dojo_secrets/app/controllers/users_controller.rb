@@ -1,13 +1,14 @@
 class UsersController < ApplicationController
-  # def index
-  #   redirect_to new_user_path
-  # end
+  def index
+    redirect_to new_user_path
+  end
 
   def new
   end
 
   def show
     @user = User.find(params[:id])
+    @secrets = @user.secrets
   end
 
   def edit
