@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+  
   def index
     redirect_to new_user_path
   end
@@ -40,5 +42,11 @@ class UsersController < ApplicationController
     User.find(params[:id]).destroy
     session.delete(:user_id) if session[:user_id]
     redirect_to new_user_path
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

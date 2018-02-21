@@ -5,7 +5,6 @@
 
 <form action="<%= secrets_path %>" method="post">
   <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="user_id" value="<%= @user.id %>">
 
   <label>Content</label>
   <input type="text" name="content">
@@ -16,9 +15,12 @@
 <h3>My secrets</h3>
 <% if @secrets %>
   <% @secrets.each do |secret| %>
-    <p><%= secret.content %></p>
-    <% if current_user == secret.user %>
-      <a href="<%= secret_path secret %>" data-method= 'delete'><button>Delete Secret</button></a>
-    <% end %>
+    <p><%= secret.content %>
+      <% if current_user == secret.user %>
+        <a href="<%= secret_path secret %>" data-method= 'delete'>
+          <button class='delete_button'>Delete Secret</button>
+        </a>
+      <% end %>
+    </p>
   <% end %>
 <% end %>

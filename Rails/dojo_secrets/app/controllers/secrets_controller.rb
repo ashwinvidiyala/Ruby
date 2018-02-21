@@ -4,13 +4,12 @@ class SecretsController < ApplicationController
   end
 
   def create
-    user = User.find(params[:user_id])
-    secret = Secret.create(content: params[:content], user: user)
+    secret = Secret.create(content: params[:content], user: current_user)
     unless secret.valid?
       flash[:errors] = secret.errors.full_messages
       return redirect_to user_path user
     end
-    return redirect_to user_path user
+    return redirect_to user_path current_user
   end
 
   def destroy
