@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :authorized_user, except: [:index, :new, :create]
 
@@ -54,5 +54,8 @@ class UsersController < ApplicationController
   def authorized_user
     user = User.find(params[:id])
     redirect_to user_path current_user unless user == current_user
+    # Alternate way
+    # user_id = params[:id].to_i
+    # redirect_to "/users/#{current_user.id}" unless current_user.id == user_id
   end
 end

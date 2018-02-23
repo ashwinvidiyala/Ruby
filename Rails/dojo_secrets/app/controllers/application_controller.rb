@@ -14,6 +14,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    redirect_to new_session_path unless session.key?(:user_id)
+    # redirect_to new_session_path unless session.key?(:user_id)
+    redirect_to new_session_path unless current_user
   end
 end
